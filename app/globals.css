@@ -1,1 +1,23 @@
-@import "tailwindcss";
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+header > h1 {
+    text-align: center;
+}
+
+.homePage {
+    text-align: center;
+}
+
+img {
+    width: 200px;
+}
