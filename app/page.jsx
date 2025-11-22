@@ -10,7 +10,7 @@ export default function Home() {
         <p>2. Select a video of your choice.</p>
         <p>3. Choose your desired color and color threshold tolerance. This will update your black and white image with a center dot for tracking!</p>
         <p>4. Your results will be recorded in a link for a CSV!</p>
-      <Link href = "api/videos"><button>Fetch All Videos</button></Link>
+      <Link href = "/api/videos"><button>Fetch All Videos</button></Link>
     </div>
   );
 }
