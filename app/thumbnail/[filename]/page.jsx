@@ -2,7 +2,7 @@
 
 import Header from "@/app/components/Header.jsx"
 import { useEffect, useState } from "react"
-import React from "react";
+import React from "react"
 
 export default function ThumbnailPage(props) {
     const { filename } = React.use(props.params)
@@ -10,11 +10,8 @@ export default function ThumbnailPage(props) {
 
     useEffect(() => {
         async function load() {
-            // fetch the frame from backend
             const res = await fetch(`http://localhost:3000/thumbnail/${filename}`)
             const blob = await res.blob()
-
-            // turn it into a usable img src
             setImgURL(URL.createObjectURL(blob))
         }
 
