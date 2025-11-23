@@ -1,7 +1,6 @@
 'use client'
 
 import Header from "@/app/components/Header.jsx"
-import {mockData} from "@/mock/data.js";
 import {useEffect, useState} from 'react'
 import Link from "next/link"
 

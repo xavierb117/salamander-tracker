@@ -1,32 +1,12 @@
-'use client'
-
-import Header from "@/app/components/Header.jsx"
-import { useEffect, useState } from "react"
 import React from "react"
+import ThumbnailHandling from "./ThumbnailHandling"
 
-export default function ThumbnailPage(props) {
-    const { filename } = React.use(props.params)
-    const [imgURL, setImgURL] = useState(null)
-
-    useEffect(() => {
-        async function load() {
-            const res = await fetch(`http://localhost:3000/thumbnail/${filename}`)
-            const blob = await res.blob()
-            setImgURL(URL.createObjectURL(blob))
-        }
-
-        load()
-    }, [filename])
+export default function ThumbnailPage({params}) {
+    const { filename } = React.use(params);
 
     return (
         <div>
-            <Header head={`Thumbnail: ${filename}`}/>
-
-            {imgURL ? (
-                <img src={imgURL} width={400} />
-            ) : (
-                <p>Loading thumbnail...</p>
-            )}
+            <ThumbnailHandling filename={filename}/>
         </div>
     )
 }
