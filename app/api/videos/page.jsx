@@ -10,7 +10,13 @@ export default function Videos()
     const [videos, setVideos] = useState([]);
 
     useEffect(() => {
-        setVideos(mockData)
+        async function load()
+        {
+            const res = await fetch("http://localhost:3000/api/videos")
+            const data = await res.json();
+            setVideos(data)
+        }
+        load()
     }, [])
 
     const items = videos.map((item) => (
