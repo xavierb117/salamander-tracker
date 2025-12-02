@@ -16,6 +16,9 @@ export default function Facts() {
     }, [])
 
     return (
-        <p>{`Salamander Fact: ${randomFact}`}</p>
+        <div className="facts">
+            <p>Salamander Fact </p>
+            <p>{`${randomFact}`}</p>
+        </div>
     )
 }

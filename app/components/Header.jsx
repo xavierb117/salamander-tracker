@@ -5,8 +5,12 @@ export default function Header({head}) {
     return (
         <header>
             <img src = {logo.src} alt = "Salamander Logo" />
-            <h1>{head}</h1>
-            <Link href="/">Go Home</Link>
+
+            <div className="homeHeading">
+                <h1>{head}</h1>
+                <Link className = "homeLink" href="/">Go Home</Link>
+            </div>
+
             <img src = {logo.src} alt = "Salamander Logo" />
         </header>
     )

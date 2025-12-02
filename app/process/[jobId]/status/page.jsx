@@ -15,7 +15,7 @@ export default function Status() {
     return (
         <div>
             <Header head="CSV Download" />
-            {link === "done" ? <p>Your file has been analyzed!</p> : <p>An error has occured</p>}
+            {link === "done" ? <p className="csv">Your file has been analyzed!</p> : <p className="csv">An error has occured</p>}
         </div>
     )
 }
