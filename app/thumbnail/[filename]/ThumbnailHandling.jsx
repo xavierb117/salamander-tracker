@@ -2,10 +2,14 @@
 
 import { useEffect, useState } from "react"
 import Header from "@/app/components/Header.jsx"
-import Link from "next/link"
+import {useRouter} from "next/navigation"; // RESEARCHED TO HELP WITH POST REQUEST
 
 export default function ThumbnailHandling({filename}) {
+    const router = useRouter();
+
     const [imgURL, setImgURL] = useState(null)
+    const [color, setColor] = useState("000000")
+    const [range, setRange] = useState(0)
     
     useEffect(() => {
         async function load() {
@@ -16,6 +20,17 @@ export default function ThumbnailHandling({filename}) {
 
         load()
     }, [filename])
+
+    function changeColor(hex) {
+        const trueHex = hex.target.value.slice(1)
+        setColor(trueHex)
+    }
+
+    const handleClick = async() => {
+        const res = await fetch(`http://localhost:3000/process/${filename}?targetColor=${color}&threshold=${range}`)
+        const resBody = await res.json()
+        router.push(`/process/${resBody.jobId}/status`)
+    } 
 
     return (
         <div>
@@ -29,12 +44,12 @@ export default function ThumbnailHandling({filename}) {
             <div className="analysis">
                 <div className="selections">
                     <label>
-                        Select your favorite color: <input type="color"/>
+                        Select your favorite color: <input type="color" onChange={(e) => changeColor(e)}/>
                     </label>
                     <label>
-                        Select your threshold: <input type="range" min="0" max="255"/>
+                        Select your threshold: <input type="range" min="0" max="255" onChange={(e) => setRange(Number(e.target.value))}/>
                     </label>
-                    <Link href="/process/8d52422d-2a92-46b7-ab3a-d906903a73f1/status"><button>Analyze</button></Link>
+                    <button onClick={handleClick}>Process Video with These Settings</button>
                 </div>
                 <div className="imageAnalysis">
                     {imgURL ? (
