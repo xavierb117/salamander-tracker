@@ -142,7 +142,7 @@ export default function ThumbnailHandling({ filename }) {
             <div className="analysis">
                 <div className="selections">
                     <label>
-                        Select your favorite color: 
+                        Select your color: 
                         <input type="color" onChange={changeColor} />
                     </label>
 
