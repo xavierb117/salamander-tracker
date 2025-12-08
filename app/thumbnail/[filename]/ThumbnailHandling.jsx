@@ -207,6 +207,13 @@ function binarizeImage(imageData, targetColor, threshold) {
             setColor(hex);
         }
 
+        function changeRange(e) {
+            if (e.target.value < 0 || e.target.value > 255) {
+                return
+            }
+            setRange(Number(e.target.value))
+        }
+
         const handleClick = async () => {
             console.log(color)
             console.log(range)
@@ -239,7 +246,13 @@ function binarizeImage(imageData, targetColor, threshold) {
                             Select your threshold:
                             <input type="range" min="0" max="255"
                                 value={range}
-                                onChange={(e) => setRange(Number(e.target.value))} />
+                                onChange={changeRange} />
+                            <span className="thresholdValue">{range}</span>
+                        </label>
+
+                        <label>
+                            Input Threshold (Alternate Method)
+                            <input type="number" min="0" max="255" value={range} onChange={changeRange}/>
                         </label>
 
                         <button onClick={handleClick}>Process Video with These Settings</button>

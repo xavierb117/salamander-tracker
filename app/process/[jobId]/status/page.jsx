@@ -33,7 +33,7 @@ export default function Status({params}) {
         <div>
             <Header head="CSV Download" />
             {(status.status === "done") ? 
-            <p className="processing">Analysis Complete! This link will hold coordinates of x and y over each second of your video in a CSV.
+            <p className="processing">Analysis Complete! This link will hold coordinates of X and Y over each second of your video in a CSV.
             <a className="csvBlock" href={grabURL()} download="analysis.csv">CSV File</a></p> 
             : (status.status === "error") ? <p className="error">An error has occured during analysis.</p>
             : <p className="processing">Your video is currently being processed...</p>}
