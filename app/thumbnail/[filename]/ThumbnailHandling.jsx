@@ -153,7 +153,7 @@ function binarizeImage(imageData, targetColor, threshold) {
 // ---------------------------------------------------------
         useEffect(() => {
             if (!imgURL) return;
-
+            
             const oCanvas = document.getElementById("originalCanvas");
             const bCanvas = document.getElementById("binaryCanvas");
 
@@ -197,7 +197,7 @@ function binarizeImage(imageData, targetColor, threshold) {
             // Draw centroid dot
             bctx.fillStyle = "lime";
             bctx.beginPath();
-            bctx.arc(centroid.x, centroid.y, 5, 0, Math.PI * 2);
+            bctx.arc(centroid.x, centroid.y, 10, 0, Math.PI * 2);
             bctx.fill();
 
         }, [imgURL, color, range]);
@@ -208,6 +208,8 @@ function binarizeImage(imageData, targetColor, threshold) {
         }
 
         const handleClick = async () => {
+            console.log(color)
+            console.log(range)
             const res = await fetch(
                 `http://localhost:3000/process/${filename}?targetColor=${color}&threshold=${range}`
             );

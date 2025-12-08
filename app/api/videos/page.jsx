@@ -19,7 +19,7 @@ export default function Videos()
     }, [])
 
     const items = videos.map((item) => (
-        <Link key = {item} href = {`/thumbnail/${item}`}>{item}</Link>
+        <Link key = {item} href = {`/thumbnail/${item}`} className="links">{item}</Link>
     ))
 
     return (

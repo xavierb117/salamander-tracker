@@ -61,6 +61,20 @@ header > img {
 .videoLinks {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.links {
+    margin: 20px;
+}
+
+.processing {
+    text-align: center;
+}
+
+.csvBlock {
+    display: block;
+    margin-top: 15px;
 }
 
 .homePage, .facts, .homeHeading {
@@ -98,4 +112,5 @@ img {
 canvas
 {
     width: 350;
+    margin: 10px;
 }
