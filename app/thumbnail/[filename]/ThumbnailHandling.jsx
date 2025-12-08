@@ -204,17 +204,14 @@ function binarizeImage(imageData, targetColor, threshold) {
             bctx.fill();
 
             // Draw centroid on ORIGINAL image
-            // ---- FIX STARTS HERE ----
-            // Draw centroid on ORIGINAL image
             const octx2 = oCanvas.getContext("2d");
 
-            // Clear original
             octx2.clearRect(0, 0, oCanvas.width, oCanvas.height);
 
-            // Redraw original image (REAL FIX)
             if (loadedImg) {
                 octx2.drawImage(loadedImg, 0, 0);
             }
+            
             octx2.fillStyle = "lime";
             octx2.beginPath();
             octx2.arc(centroid.x, centroid.y, 10, 0, Math.PI * 2);
