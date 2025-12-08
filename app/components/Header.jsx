@@ -8,7 +8,7 @@ export default function Header({head}) {
 
             <div className="homeHeading">
                 <h1>{head}</h1>
-                <Link className = "homeLink" href="/">Go Home</Link>
+                <button className = "homeLink"><Link href="/">Go Home</Link></button>
             </div>
 
             <img src = {logo.src} alt = "Salamander Logo" />
