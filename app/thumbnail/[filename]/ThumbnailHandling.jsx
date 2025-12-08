@@ -121,6 +121,8 @@ function binarizeImage(imageData, targetColor, threshold) {
         const [imgURL, setImgURL] = useState(null);
         const [color, setColor] = useState("000000");
         const [range, setRange] = useState(60);   // safer default threshold
+        const [loadedImg, setLoadedImg] = useState(null);
+
 
 // ---------------------------------------------------------
 // LOAD IMAGE → DRAW TO ORIGINAL CANVAS
@@ -135,6 +137,7 @@ function binarizeImage(imageData, targetColor, threshold) {
                 const img = new Image();
                 img.src = url;
                 img.onload = () => {
+                    setLoadedImg(img);
                     const canvas = document.getElementById("originalCanvas");
                     const ctx = canvas.getContext("2d");
 
@@ -199,6 +202,23 @@ function binarizeImage(imageData, targetColor, threshold) {
             bctx.beginPath();
             bctx.arc(centroid.x, centroid.y, 10, 0, Math.PI * 2);
             bctx.fill();
+
+            // Draw centroid on ORIGINAL image
+            // ---- FIX STARTS HERE ----
+            // Draw centroid on ORIGINAL image
+            const octx2 = oCanvas.getContext("2d");
+
+            // Clear original
+            octx2.clearRect(0, 0, oCanvas.width, oCanvas.height);
+
+            // Redraw original image (REAL FIX)
+            if (loadedImg) {
+                octx2.drawImage(loadedImg, 0, 0);
+            }
+            octx2.fillStyle = "lime";
+            octx2.beginPath();
+            octx2.arc(centroid.x, centroid.y, 10, 0, Math.PI * 2);
+            octx2.fill();
 
         }, [imgURL, color, range]);
 
